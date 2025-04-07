@@ -1,0 +1,8 @@
+com/amazonaws/serverless/dao/DynamoDBEventDao.class
+com/amazonaws/serverless/manager/DynamoDBManager.class
+com/amazonaws/serverless/pojo/Team.class
+com/amazonaws/serverless/function/EventFunctions.class
+com/amazonaws/serverless/domain/Event.class
+com/amazonaws/serverless/dao/EventDao.class
+com/amazonaws/serverless/util/Consts.class
+com/amazonaws/serverless/pojo/City.class

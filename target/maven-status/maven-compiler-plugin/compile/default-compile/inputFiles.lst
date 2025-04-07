@@ -1,0 +1,8 @@
+/data/code/src/main/java/com/amazonaws/serverless/pojo/Team.java
+/data/code/src/main/java/com/amazonaws/serverless/manager/DynamoDBManager.java
+/data/code/src/main/java/com/amazonaws/serverless/dao/DynamoDBEventDao.java
+/data/code/src/main/java/com/amazonaws/serverless/util/Consts.java
+/data/code/src/main/java/com/amazonaws/serverless/dao/EventDao.java
+/data/code/src/main/java/com/amazonaws/serverless/function/EventFunctions.java
+/data/code/src/main/java/com/amazonaws/serverless/pojo/City.java
+/data/code/src/main/java/com/amazonaws/serverless/domain/Event.java
