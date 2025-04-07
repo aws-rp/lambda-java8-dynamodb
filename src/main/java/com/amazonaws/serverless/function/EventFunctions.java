@@ -22,15 +22,15 @@ import java.util.List;
 import com.amazonaws.serverless.dao.DynamoDBEventDao;
 import com.amazonaws.serverless.pojo.Team;
 import com.amazonaws.serverless.util.Consts;
-import org.apache.log4j.Logger;
-
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import com.amazonaws.serverless.domain.Event;
 import com.amazonaws.serverless.pojo.City;
 
 
 public class EventFunctions {
 
-    private static final Logger log = Logger.getLogger(EventFunctions.class);
+    private static final Logger log = LogManager.getLogger(EventFunctions.class);
 
     private static final DynamoDBEventDao eventDao = DynamoDBEventDao.instance();
 
@@ -39,7 +39,7 @@ public class EventFunctions {
 
         log.info("GetAllEvents invoked to scan table for ALL events");
         List<Event> events = eventDao.findAllEvents();
-        log.info("Found " + events.size() + " total events.");
+        log.info("Found {} total events.", events.size());
         return events;
     }
 
@@ -51,9 +51,9 @@ public class EventFunctions {
         }
 
         String name = URLDecoder.decode(team.getTeamName(), "UTF-8");
-        log.info("GetEventsForTeam invoked for team with name = " + name);
+        log.info("GetEventsForTeam invoked for team with name = {}", name);
         List<Event> events = eventDao.findEventsByTeam(name);
-        log.info("Found " + events.size() + " events for team = " + name);
+        log.info("Found {} events for team = {}", events.size(), name);
 
         return events;
     }
@@ -66,9 +66,9 @@ public class EventFunctions {
         }
 
         String name = URLDecoder.decode(city.getCityName(), "UTF-8");
-        log.info("GetEventsForCity invoked for city with name = " + name);
+        log.info("GetEventsForCity invoked for city with name = {}", name);
         List<Event> events = eventDao.findEventsByCity(name);
-        log.info("Found " + events.size() + " events for city = " + name);
+        log.info("Found {} events for city = {}", events.size(), name);
 
         return events;
     }
@@ -80,7 +80,7 @@ public class EventFunctions {
             throw new IllegalArgumentException("Cannot save null object");
         }
 
-        log.info("Saving or updating event for team = " + event.getHomeTeam() + " , date = " + event.getEventDate());
+        log.info("Saving or updating event for team = {} , date = {}", event.getHomeTeam(), event.getEventDate());
         eventDao.saveOrUpdateEvent(event);
         log.info("Successfully saved/updated event");
     }
@@ -92,7 +92,7 @@ public class EventFunctions {
             throw new IllegalArgumentException("Cannot delete null object");
         }
 
-        log.info("Deleting event for team = " + event.getHomeTeam() + " , date = " + event.getEventDate());
+        log.info("Deleting event for team = {} , date = {}", event.getHomeTeam(), event.getEventDate());
         eventDao.deleteEvent(event.getHomeTeam(), event.getEventDate());
         log.info("Successfully deleted event");
     }

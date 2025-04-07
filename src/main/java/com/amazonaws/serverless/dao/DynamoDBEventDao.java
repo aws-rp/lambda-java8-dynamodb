@@ -21,14 +21,15 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.serverless.domain.Event;
 import com.amazonaws.serverless.manager.DynamoDBManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.*;
 
 
 public class DynamoDBEventDao implements EventDao {
 
-    private static final Logger log = Logger.getLogger(DynamoDBEventDao.class);
+    private static final Logger log = LogManager.getLogger(DynamoDBEventDao.class);
 
     private static final DynamoDBMapper mapper = DynamoDBManager.mapper();
 
